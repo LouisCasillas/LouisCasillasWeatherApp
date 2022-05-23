@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.louiscasillasweatherapp.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment()  {
@@ -21,8 +22,7 @@ class SearchFragment : Fragment()  {
             val cityInput = binding.etCityInput.text.toString()
 
             val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(com.example.louiscasillasweatherapp.R.id.fr_container, ResultsFragment(cityInput))
-                ?.addToBackStack(null)?.commit()
+            transaction?.replace(com.example.louiscasillasweatherapp.R.id.fr_container, ResultsFragment(cityInput), "RESULTS_FRAG")?.addToBackStack(null)?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)?.commit()
         }
 
         return binding.root

@@ -31,9 +31,6 @@ data class WeatherListItem(
     }
 
     fun getFullTemp(): String {
-
-        println( "**** model " + MainActivity.tempButton?.text)
-
         return "Temp: " + convertTemp(this.main.temp)
     }
 

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.louiscasillasweatherapp.MainActivity
@@ -75,8 +76,9 @@ class ResultsFragment(private var city: String?) : Fragment() {
 
     private fun openDetails(weatherListItem: WeatherListItem) {
         parentFragmentManager.beginTransaction()
-            .replace(com.example.louiscasillasweatherapp.R.id.fr_container, DetailsFragment.newInstance(weatherListItem, city))
+            .replace(com.example.louiscasillasweatherapp.R.id.fr_container, DetailsFragment.newInstance(weatherListItem, city), "DETAILS_FRAG")
             .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
     }
 }

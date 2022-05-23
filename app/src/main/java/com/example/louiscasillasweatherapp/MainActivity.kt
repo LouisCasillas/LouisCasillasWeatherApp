@@ -2,7 +2,6 @@ package com.example.louiscasillasweatherapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
 import com.example.louiscasillasweatherapp.view.SearchFragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
@@ -26,9 +25,22 @@ class MainActivity : AppCompatActivity() {
                 "°C" -> "°K"
                 else -> "°F"
             }
+
+            val currentFragment = supportFragmentManager.fragments.last()
+
+            supportFragmentManager.beginTransaction().let {
+                it.detach(currentFragment)
+                it.commit()
+            }
+            supportFragmentManager.executePendingTransactions()
+            supportFragmentManager.beginTransaction().let {
+                it.attach(currentFragment)
+                it.commit()
+            }
+
         }
 
-        supportFragmentManager.beginTransaction().replace(R.id.fr_container, SearchFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fr_container, SearchFragment(), "SEARCH_FRAG").commit()
     }
 }
 
