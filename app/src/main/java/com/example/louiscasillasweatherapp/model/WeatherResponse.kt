@@ -48,7 +48,6 @@ data class WeatherListItem(
     private fun convertTemp(tempInK: Double) : String {
         val tempScale = MainActivity.tempButton?.text
 
-        // °F °C °K
         var current_temp : Double = when (tempScale) {
             "°F" -> ((tempInK * 1.8) - 459.67)
             "°C" -> (tempInK - 273.15)

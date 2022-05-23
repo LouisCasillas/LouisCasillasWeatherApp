@@ -15,7 +15,7 @@ import com.example.louiscasillasweatherapp.repository.WeatherRepoImpl
 import com.example.louiscasillasweatherapp.viewmodel.WeatherViewModel
 import java.util.*
 
-class ScrollFragment(private var city: String?) : Fragment() {
+class ResultsFragment(private var city: String?) : Fragment() {
     private var _binding: FragmentScrollBinding? = null
     private val binding: FragmentScrollBinding get() = _binding!!
 
